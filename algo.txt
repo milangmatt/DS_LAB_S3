@@ -1,0 +1,54 @@
+Include necessary header files:
+
+Include <stdio.h> for standard input/output operations.
+Include <stdlib.h> for standard library functions like exit().
+Include <unistd.h> for Unix system calls like fork(), exec(), etc.
+Include <sys/types.h> for various data types used in system calls.
+Include <sys/wait.h> for process-related functions like wait().
+Include <dirent.h> for directory manipulation functions like opendir() and readdir().
+Declare variables:
+
+Declare variables for process IDs (pid_t pid), child process status (int status), and directory (DIR *dir).
+Fork a child process:
+
+Call fork() to create a child process.
+Handle fork errors:
+
+Check if fork() returns a negative value, indicating a failure.
+If so, print an error message and exit the program with a failure status.
+In the child process:
+
+Print the child process ID using getpid().
+Define arguments for the ls -l command to be executed.
+Execute the ls -l command using execvp() or execlp().
+Handle exec errors in the child process:
+
+If exec() fails (returns -1), print an error message using perror() and exit with a failure status.
+In the parent process:
+
+Print the parent process ID using getpid().
+Wait for the child process to terminate using wait(&status).
+Handle wait errors in the parent process:
+
+If wait() returns an error, print an error message using perror().
+Print child process exit status:
+
+Print the exit status of the child process using WEXITSTATUS(status).
+Open the current directory:
+
+Use opendir() to open the current directory (".").
+Handle directory open errors:
+
+Check if opendir() returns NULL, indicating an error.
+If so, print an error message using perror() and exit with a failure status.
+Read and print directory contents:
+
+Use readdir() to read directory entries one by one.
+Print each directory entry's name.
+Repeat until all entries are read.
+Close the directory:
+
+Close the directory using closedir().
+Exit the program:
+
+Exit the program with a success status.
