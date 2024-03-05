@@ -69,13 +69,13 @@ void binSearch(int arr[100],int n){
                 else if (arr[mid]<srch){
                         l=mid+1;
                 }
-                else{
+                else {
                         printf("%d found at index %d \n",arr[mid],mid-1);
                         flag=1;
                         break;
                 }
         }
-        if (flag==0){
+        if (flag==0) {
                printf("Element not Found!\n"); 
         }
 

@@ -5,6 +5,7 @@ Experiment No: 3
 Experiment Name : Stack
 Date : 12-10-2023
 */
+
 #include <stdio.h>
 int a[15],top,size;
 void push();
@@ -72,11 +73,5 @@ void main(){
         };
         }while(ch!=0);
         printf("Program Exiting......\n");
-        
-        
-        
-        
-        
-        
-        
+  
 }

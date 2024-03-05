@@ -15,21 +15,24 @@ void merge(int arr[], int low, int mid, int high);
 void heapSort(int arr[], int n);
 void buildHeap(int arr[], int n);
 void maxHeapify(int arr[], int n, int i);
-void swap(int* a, int* b);
+void swap(int *a, int *b);
 int partition(int arr[], int low, int high);
 
-int main() {
+int main()
+{
     int choice, n, i;
     printf("Enter the number of elements in the array: ");
     scanf("%d", &n);
-    
+
     int arr[n];
     printf("Enter the elements:\n");
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++)
+    {
         scanf("%d", &arr[i]);
     }
 
-    do {
+    do
+    {
         printf("\nMenu:\n");
         printf("1. Quick Sort\n");
         printf("2. Merge Sort\n");
@@ -38,37 +41,41 @@ int main() {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch (choice) {
-            case 1:
-                quickSort(arr, 0, n - 1);
-                printf("Array after Quick Sort:\n");
-                for (i = 0; i < n; i++) {
-                    printf("%d ", arr[i]);
-                }
-                printf("\n");
-                break;
-            case 2:
-                mergeSort(arr, 0, n - 1);
-                printf("Array after Merge Sort:\n");
-                for (i = 0; i < n; i++) {
-                    printf("%d ", arr[i]);
-                }
-                printf("\n");
-                break;
-            case 3:
-                heapSort(arr, n);
-                printf("Array after Heap Sort:\n");
-                for (i = 0; i < n; i++) {
-                    printf("%d ", arr[i]);
-                }
-                printf("\n");
-                break;
-            case 4:
-                printf("Exiting...\n");
-                break;
-            default:
-                printf("Invalid choice! Please enter a valid option.\n");
-                break;
+        switch (choice)
+        {
+        case 1:
+            quickSort(arr, 0, n - 1);
+            printf("Array after Quick Sort:\n");
+            for (i = 0; i < n; i++)
+            {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
+            break;
+        case 2:
+            mergeSort(arr, 0, n - 1);
+            printf("Array after Merge Sort:\n");
+            for (i = 0; i < n; i++)
+            {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
+            break;
+        case 3:
+            heapSort(arr, n);
+            printf("Array after Heap Sort:\n");
+            for (i = 0; i < n; i++)
+            {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
+            break;
+        case 4:
+            printf("Exiting...\n");
+            break;
+        default:
+            printf("Invalid choice! Please enter a valid option.\n");
+            break;
         }
     } while (choice != 4);
 
@@ -76,8 +83,10 @@ int main() {
 }
 
 // Quick Sort
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
         int pi = partition(arr, low, high);
 
         quickSort(arr, low, pi - 1);
@@ -85,12 +94,15 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-int partition(int arr[], int low, int high) {
+int partition(int arr[], int low, int high)
+{
     int pivot = arr[high];
     int i = (low - 1);
 
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] < pivot) {
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
             i++;
             swap(&arr[i], &arr[j]);
         }
@@ -100,8 +112,10 @@ int partition(int arr[], int low, int high) {
 }
 
 // Merge Sort
-void mergeSort(int arr[], int low, int high) {
-    if (low < high) {
+void mergeSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
         int mid = low + (high - low) / 2;
 
         mergeSort(arr, low, mid);
@@ -111,7 +125,8 @@ void mergeSort(int arr[], int low, int high) {
     }
 }
 
-void merge(int arr[], int low, int mid, int high) {
+void merge(int arr[], int low, int mid, int high)
+{
     int n1 = mid - low + 1;
     int n2 = high - mid;
 
@@ -123,24 +138,30 @@ void merge(int arr[], int low, int mid, int high) {
         R[j] = arr[mid + 1 + j];
 
     int i = 0, j = 0, k = low;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
             arr[k] = L[i];
             i++;
-        } else {
+        }
+        else
+        {
             arr[k] = R[j];
             j++;
         }
         k++;
     }
 
-    while (i < n1) {
+    while (i < n1)
+    {
         arr[k] = L[i];
         i++;
         k++;
     }
 
-    while (j < n2) {
+    while (j < n2)
+    {
         arr[k] = R[j];
         j++;
         k++;
@@ -148,41 +169,50 @@ void merge(int arr[], int low, int mid, int high) {
 }
 
 // Heap Sort
-void heapSort(int arr[], int n) {
+void heapSort(int arr[], int n)
+{
     buildHeap(arr, n);
 
-    for (int i = n - 1; i > 0; i--) {
+    for (int i = n - 1; i > 0; i--)
+    {
         swap(&arr[0], &arr[i]);
         maxHeapify(arr, i, 0);
     }
 }
 
-void buildHeap(int arr[], int n) {
-    for (int i = n / 2 - 1; i >= 0; i--) {
+void buildHeap(int arr[], int n)
+{
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
         maxHeapify(arr, n, i);
     }
 }
 
-void maxHeapify(int arr[], int n, int i) {
+void maxHeapify(int arr[], int n, int i)
+{
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if (left < n && arr[left] > arr[largest]) {
+    if (left < n && arr[left] > arr[largest])
+    {
         largest = left;
     }
 
-    if (right < n && arr[right] > arr[largest]) {
+    if (right < n && arr[right] > arr[largest])
+    {
         largest = right;
     }
 
-    if (largest != i) {
+    if (largest != i)
+    {
         swap(&arr[i], &arr[largest]);
         maxHeapify(arr, n, largest);
     }
 }
 
-void swap(int* a, int* b) {
+void swap(int *a, int *b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
